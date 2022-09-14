@@ -10,13 +10,8 @@ const styles = StyleSheet.create({
 	},
 });
 
-const ListContainer = ({ style, tasks, ...props }) => {
-	const handleModal = (id) => {
-		setShowModal(!showModal);
-		setSelectedTask(tasks.find((item) => item.id === id));
-	};
-
-	const renderItem = ({ item }) => (
+const ListContainer = ({ style, tasks, handleModal, ...props }) => {
+	const renderItem = ({ item, handleModal }) => (
 		<ListItem item={item} style={styles} handleModal={handleModal} />
 	);
 

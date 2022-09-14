@@ -1,3 +1,3 @@
-import List from "./List";
+import InputTask from "./InputTask";
 
-export default List;
+export default InputTask;
