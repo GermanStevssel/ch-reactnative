@@ -10,24 +10,17 @@ import {
 import check from "../../assets/icons/check.png";
 import remove from "../../assets/icons/remove.png";
 
-const ListItem = ({ item, handleModal, ...props }) => {
+const ListCompletedItem = ({ item, handleModal, ...props }) => {
 	return (
 		<Animated.View key={`item-${item.id}`} style={styles.itemContainer}>
 			<Text style={styles.item}>{item.value}</Text>
-			<View style={styles.iconsContainer}>
-				<TouchableOpacity onPress={() => handleModal(item.id, "check")}>
-					<Image source={check} style={styles.icons} />
-				</TouchableOpacity>
-				<TouchableOpacity onPress={() => handleModal(item.id)}>
-					<Image source={remove} style={styles.icons} />
-				</TouchableOpacity>
-			</View>
 		</Animated.View>
 	);
 };
 
 const styles = StyleSheet.create({
 	itemContainer: {
+		opacity: 0.6,
 		justifyContent: "space-between",
 		flexDirection: "row",
 		alignItems: "center",
@@ -63,4 +56,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default ListItem;
+export default ListCompletedItem;

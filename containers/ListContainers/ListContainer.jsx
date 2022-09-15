@@ -2,16 +2,8 @@ import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 import ListItem from "../../components/ListItem/ListItem";
 
-const styles = StyleSheet.create({
-	itemList: {
-		flex: 1,
-		marginVertical: 20,
-		marginHorizontal: 20,
-	},
-});
-
 const ListContainer = ({ style, tasks, handleModal, ...props }) => {
-	const renderItem = ({ item, handleModal }) => (
+	const renderItem = ({ item }) => (
 		<ListItem item={item} style={styles} handleModal={handleModal} />
 	);
 
@@ -24,5 +16,12 @@ const ListContainer = ({ style, tasks, handleModal, ...props }) => {
 		/>
 	);
 };
+
+const styles = StyleSheet.create({
+	itemList: {
+		marginVertical: 20,
+		marginHorizontal: 20,
+	},
+});
 
 export default ListContainer;

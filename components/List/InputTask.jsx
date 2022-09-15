@@ -1,22 +1,12 @@
 import React from "react";
-import { Button, StyleSheet, TextInput, View } from "react-native";
-
-const styles = StyleSheet.create({
-	inputContainer: {
-		flexDirection: "row",
-		justifyContent: "space-between",
-		marginTop: 50,
-		marginBottom: 20,
-		marginHorizontal: 20,
-	},
-	input: {
-		width: "75%",
-		borderBottomColor: "#5258CB",
-		borderBottomWidth: 1,
-		height: 40,
-		color: "#212121",
-	},
-});
+import {
+	Button,
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View,
+} from "react-native";
 
 const InputTask = ({ task, handleChangeText, addTask }) => {
 	return (
@@ -28,9 +18,47 @@ const InputTask = ({ task, handleChangeText, addTask }) => {
 				value={task}
 				onChangeText={handleChangeText}
 			/>
-			<Button title="Add" onPress={addTask} color="#5258CB" />
+
+			<TouchableOpacity
+				style={styles.addButton}
+				onPress={addTask}
+				color="#FAFAFA"
+			>
+				<Text style={styles.text}>+</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	inputContainer: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginTop: 20,
+		marginBottom: 20,
+		marginHorizontal: 20,
+	},
+	input: {
+		width: "80%",
+		borderBottomColor: "#5258CB",
+		borderBottomWidth: 1,
+		height: 40,
+		color: "#212121",
+	},
+	addButton: {
+		alignItems: "center",
+		justifyContent: "center",
+		backgroundColor: "#5258CB",
+		borderRadius: 30,
+		width: 50,
+		height: 50,
+	},
+	text: {
+		fontSize: 20,
+		fontWeight: "bold",
+		color: "#FAFAFA",
+	},
+});
 
 export default InputTask;
