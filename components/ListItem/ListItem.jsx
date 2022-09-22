@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import check from "../../assets/icons/check.png";
 import remove from "../../assets/icons/remove.png";
+import { colors, sizes } from "../../constants";
 
 const ListItem = ({ item, handleModal, ...props }) => {
 	return (
@@ -34,9 +35,9 @@ const styles = StyleSheet.create({
 		marginVertical: 5,
 		marginHorizontal: 5,
 		backgroundColor: "#FAFAFA",
-		paddingHorizontal: 10,
-		paddingVertical: 20,
-		borderRadius: 10,
+		paddingHorizontal: sizes.xs,
+		paddingVertical: sizes.regular,
+		borderRadius: sizes.xs,
 		shadowColor: "#000",
 		shadowOffset: { width: 2, height: 5 },
 		shadowOpacity: 0.3,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
 	},
 	item: {
 		fontSize: 22,
-		color: "#5258CB",
+		color: colors.primary,
 	},
 	iconsContainer: {
 		width: "20%",
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
 	},
 	delete: {
 		fontSize: 22,
-		fontWeight: "bold",
-		color: "#5258CB",
+		fontFamily: "Quicksand-Bold",
+		color: colors.primary,
 	},
 });
 

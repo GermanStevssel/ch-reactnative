@@ -1,14 +1,22 @@
-import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { Fragment, useState } from "react";
+import {
+	SafeAreaView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+} from "react-native";
 import InputTask from "../../components/List/InputTask";
 import ModalTasks from "../../components/ModalTasks";
+import { colors, sizes } from "../../constants";
 import CompletedListContainer from "../CompletedListContainer";
-import ListContainer from "../ListContainers";
+import ToDoListContainer from "../ToDoListContainer";
 
 const TasksContainer = () => {
 	const [task, setTask] = useState("");
 	const [tasks, setTasks] = useState([]);
 	const [completed, setCompleted] = useState([]);
+	const [showCompleted, setShowCompleted] = useState(false);
 	const [id, setId] = useState(1);
 	const [showModal, setShowModal] = useState({ state: false, action: "" });
 	const [selectedTask, setSelectedTask] = useState(null);
@@ -49,16 +57,36 @@ const TasksContainer = () => {
 		setShowModal((prevState) => ({ state: !prevState.state, action: "" }));
 	};
 
+	const toggleShowCompleted = () => {
+		setShowCompleted((currentValue) => !currentValue);
+	};
+
 	return (
-		<View style={styles.container}>
-			<InputTask
-				task={task}
-				handleChangeText={handleChangeText}
-				addTask={addTask}
-			/>
-			<ListContainer tasks={tasks} handleModal={handleModal} />
-			{completed.length > 0 && (
+		<SafeAreaView style={styles.container}>
+			<View style={styles.headerContainer}>
+				<View styles={styles.toDoTitleContainer}>
+					<Text style={styles.toDoTitle}>ToDo List</Text>
+				</View>
+				<TouchableOpacity
+					onPress={toggleShowCompleted}
+					style={showCompleted ? styles.toggleCompleted : styles.togglePending}
+				>
+					<Text style={styles.buttonText}>
+						{showCompleted ? "Ver Pendientes" : "Ver Completas"}
+					</Text>
+				</TouchableOpacity>
+			</View>
+			{showCompleted ? (
 				<CompletedListContainer tasks={completed} handleModal={handleModal} />
+			) : (
+				<Fragment>
+					<InputTask
+						task={task}
+						handleChangeText={handleChangeText}
+						addTask={addTask}
+					/>
+					<ToDoListContainer tasks={tasks} handleModal={handleModal} />
+				</Fragment>
 			)}
 
 			<ModalTasks
@@ -68,13 +96,42 @@ const TasksContainer = () => {
 				handleDelete={handleDelete}
 				setShowModal={setShowModal}
 			/>
-		</View>
+		</SafeAreaView>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "#fff",
+		backgroundColor: colors.backgroundLight,
+	},
+	headerContainer: {
+		paddingVertical: sizes.regular,
+		flexDirection: "row",
+		justifyContent: "space-around",
+		borderBottomColor: colors.gray,
+		borderBottomWidth: 1,
+	},
+	toDoTitleContainer: {
+		flex: 1,
+		justifyContent: "center",
+	},
+	toDoTitle: {
+		fontFamily: "Quicksand-Bold",
+		fontSize: sizes.large,
+	},
+	togglePending: {
+		padding: sizes.xs,
+		backgroundColor: colors.primary,
+		borderRadius: sizes.xs,
+	},
+	toggleCompleted: {
+		padding: sizes.xs,
+		backgroundColor: colors.secondary,
+		borderRadius: sizes.xs,
+	},
+	buttonText: {
+		color: colors.textLigth,
+		fontFamily: "Quicksand-SemiBold",
 	},
 });
 

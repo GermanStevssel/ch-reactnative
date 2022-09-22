@@ -1,14 +1,6 @@
 import React from "react";
-import {
-	Text,
-	TouchableOpacity,
-	StyleSheet,
-	Animated,
-	Image,
-	View,
-} from "react-native";
-import check from "../../assets/icons/check.png";
-import remove from "../../assets/icons/remove.png";
+import { Text, StyleSheet, Animated } from "react-native";
+import { colors, sizes } from "../../constants";
 
 const ListCompletedItem = ({ item, handleModal, ...props }) => {
 	return (
@@ -26,10 +18,10 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		marginVertical: 5,
 		marginHorizontal: 5,
-		backgroundColor: "#FAFAFA",
-		paddingHorizontal: 10,
-		paddingVertical: 20,
-		borderRadius: 10,
+		backgroundColor: colors.textLigth,
+		paddingHorizontal: sizes.xs,
+		paddingVertical: sizes.regular,
+		borderRadius: sizes.xs,
 		shadowColor: "#000",
 		shadowOffset: { width: 2, height: 5 },
 		shadowOpacity: 0.3,
@@ -37,8 +29,8 @@ const styles = StyleSheet.create({
 		elevation: 3,
 	},
 	item: {
-		fontSize: 22,
-		color: "#5258CB",
+		fontSize: sizes.regular,
+		color: colors.primary,
 	},
 	iconsContainer: {
 		width: "20%",
@@ -50,9 +42,9 @@ const styles = StyleSheet.create({
 		height: 30,
 	},
 	delete: {
-		fontSize: 22,
+		fontSize: sizes.regular,
 		fontWeight: "bold",
-		color: "#5258CB",
+		color: colors.primary,
 	},
 });
 

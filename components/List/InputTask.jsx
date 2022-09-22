@@ -7,6 +7,7 @@ import {
 	TouchableOpacity,
 	View,
 } from "react-native";
+import { colors, sizes } from "../../constants";
 
 const InputTask = ({ task, handleChangeText, addTask }) => {
 	return (
@@ -14,7 +15,7 @@ const InputTask = ({ task, handleChangeText, addTask }) => {
 			<TextInput
 				style={styles.input}
 				placeholder="New task..."
-				selectionColor="#60e1e0"
+				selectionColor={colors.secondary}
 				value={task}
 				onChangeText={handleChangeText}
 			/>
@@ -22,7 +23,7 @@ const InputTask = ({ task, handleChangeText, addTask }) => {
 			<TouchableOpacity
 				style={styles.addButton}
 				onPress={addTask}
-				color="#FAFAFA"
+				color={colors.textLigth}
 			>
 				<Text style={styles.text}>+</Text>
 			</TouchableOpacity>
@@ -35,29 +36,29 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginTop: 20,
-		marginBottom: 20,
-		marginHorizontal: 20,
+		marginTop: sizes.regular,
+		marginBottom: sizes.regular,
+		marginHorizontal: sizes.regular,
 	},
 	input: {
 		width: "80%",
-		borderBottomColor: "#5258CB",
+		borderBottomColor: colors.primary,
 		borderBottomWidth: 1,
 		height: 40,
-		color: "#212121",
+		color: colors.gray,
 	},
 	addButton: {
 		alignItems: "center",
 		justifyContent: "center",
-		backgroundColor: "#5258CB",
+		backgroundColor: colors.primary,
 		borderRadius: 30,
 		width: 50,
 		height: 50,
 	},
 	text: {
-		fontSize: 20,
-		fontWeight: "bold",
-		color: "#FAFAFA",
+		fontSize: sizes.regular,
+		fontFamily: "Quicksand-Bold",
+		color: colors.textLigth,
 	},
 });
 
